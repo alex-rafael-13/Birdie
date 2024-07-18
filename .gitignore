@@ -1,0 +1,16 @@
+# Python/Django
+*.pyc
+__pycache__/
+*.sqlite3
+*.pyc
+
+# Virtual environment
+venv/
+.env
+
+# Django collectstatic
+staticfiles/
+
+# IDE specific
+.vscode/
+.idea/
