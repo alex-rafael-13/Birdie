@@ -13,3 +13,8 @@ staticfiles/
 
 # IDE specific
 .vscode/
+
+node_modules/
+
+# React build directory (if using npm build)
+frontend/build/
