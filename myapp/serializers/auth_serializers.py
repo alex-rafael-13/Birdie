@@ -6,7 +6,7 @@ class RegisterSerializer(serializers.ModelSerializer):
     '''
         Serializer to register a new User
     '''
-
+    
     #Make password write_only
     password = serializers.CharField(write_only=True)
 
@@ -15,6 +15,14 @@ class RegisterSerializer(serializers.ModelSerializer):
         model = User
         fields = ['first_name','last_name','username', 'password', 'email']
 
+    # Checks for unique emails
+    def validate_email(self, value):
+        # If user, raise validation error
+        if User.objects.filter(email=value):
+            serializers.ValidationError("This email address is already being used")
+        # Return value if no errors
+        return value
+        
     # Creates new user
     def create(self, validated_data):
         user = User.objects.create_user(
@@ -27,5 +35,6 @@ class RegisterSerializer(serializers.ModelSerializer):
 
         # If successful, return user 
         return user
+    
 
 

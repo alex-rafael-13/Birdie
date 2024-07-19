@@ -7,6 +7,7 @@ from ..serializers import RegisterSerializer
 def get_user(request):
     return HttpResponse("Hello from Users API")
 
+
 class RegisterView(APIView):
     '''
         View to register a new User
